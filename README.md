@@ -216,19 +216,23 @@ ld x8,16(x23)
 ```
 here ld is for load doubleword,x8 shows destination register (rd),16 is offset,x23 is source register . This is I type Instructions :
 
-![fig-1]()
+![fig-1](https://github.com/nitishkumar515/RISCV/assets/140998638/bc595942-b143-4d73-9ef5-84d56bc68a8d)
+
 ```add x8,x29,x8
 ```
 here add is function,x8 is destination register (rd),x29 & x8 is source register. This is R type Instructions :
-![fig-2]()
+![fig-2](https://github.com/nitishkumar515/RISCV/assets/140998638/e6bb4e4a-2eac-4619-a810-452f0a705cf3)
 ```
 sd x8,8(x23)
 ```
 here store is store doubleword,x8 is data registers,8 tell offset(immediate) ,x23 is source register. This is S type Instructions :
-![fig-3]()
+![fig-3](https://github.com/nitishkumar515/RISCV/assets/140998638/173fc3fc-30c2-44dc-b348-e96b7e4869b3)
+
 Here in each Instructions set we can see register are of 5 bits so total number of register = 2^5 = 32 registers
-![fig-4]()
-![fig-5]()
+![fig-4](https://github.com/nitishkumar515/RISCV/assets/140998638/702ecc78-cc1d-44dd-94d3-dbc0b1c15f59)
+
+![fig-5](https://github.com/nitishkumar515/RISCV/assets/140998638/3ab4d12c-a9f6-49f5-8fe0-de058596605e)
+
 
 ### Example of ABI
 Consider the C code given below which calculates the sum from 1 to 9 :
