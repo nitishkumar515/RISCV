@@ -42,13 +42,13 @@ source .bashrc
 * RISC-V ISA is a base integer ISA and must be present in any implemenatation along with some optional extension. * The RISC-V has been designed to support extensive customization and specialization which can be extended with one or more optional instruction-set extensions, but the base integer instructions cannot be redefine.
 * The different instructions included in RISC-V are listed below.
 
-Pseudo instructions - For e.g- mv,li,ret etc
-Base integer instruction (RV64I, RV32I)-For e.g-lui,addi etc
-Multiply extension (RV64M) -For e.g- mulw,divw etc
-Single and double floating point instruction (RV64F, RV64D) -For e.g- flw,fadd etc
-Application binary instruction
-Memory allocation and stack pointer
-The detail of the RISC-V instructions set manual can be found here.
+* Pseudo instructions - For e.g- mv,li,ret etc
+* Base integer instruction (RV64I, RV32I)-For e.g-lui,addi etc
+* Multiply extension (RV64M) -For e.g- mulw,divw etc
+* Single and double floating point instruction (RV64F, RV64D) -For e.g- flw,fadd etc
+* Application binary instruction
+* Memory allocation and stack pointer
+* The detail of the RISC-V instructions set manual can be found here.
 
 * Each base integer set is characterized by the width of the register (XLEN) and size of the user address space. * * The most important advantage of RISC-V is that it is an open standard instruction which is easily available for academics and commercial purposes free of cost.
 
