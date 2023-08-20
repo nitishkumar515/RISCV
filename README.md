@@ -181,6 +181,107 @@ To compile and execute the C code in RISC-V gnu toolchain follow the steps given
 riscv64-unknown-elf-gcc -Ofast -mabi=lp64 -march=rv64i -o signedHighest.o unsignedHighest.c 
 spike  pk signedHighest.o
 ```
+to result use following command
+```
+spike pk signedHighest.o
+```
 
 ## Day - 2 : Introduction to ABI and Basic Verification Flow
-### d
+### Introduction to Application Binary Interface
+* The application program can directly access the registers of the RISC V architecture using something known as system calls.
+* The ABI also known as system call interface enables the application to access the hardware resources via registers.  
+* In RISC V architecture, the width of the register is defined as XLEN.
+*  For RV64 and RV32, the widths are 64 bits and 32 bits, respectively.  
+* RISC V belongs to the little endian memory addressing system, which means that the least significant byte of a word is stored in the smallest memory address.
+
+* An Application Binary Interface is a set of rules enforced by the operating system on a specific architecture.
+*  So, Linker converts relocatable machine code to absolute machine code via ABI interface specific to the architecture of machine.
+*  Just like how application program interface (API) is used by application programs to access the standard libraries, an application binary interface or system  call interface is utilised to access hardware resources .
+*  The ISA is inherently divided into two parts: *User & System ISA* and *User ISA*  the latter is available to the user directly by system calls. 
+  
+Now, how does the ABI access the hardware resources? 
+- It uses different registers(32 in number) which are each of width `XLEN = 32 bit` for RV32 (~`XLEN = 64 for RV64`) . On a higher level of abstraction these registers are accessed by their respective ABI names.
+  
+  For base integer instructions there are broadly 3 types of of such registers:
+  - I-type : For instructions having immediate values as operands.
+  - R-type : For instructions having only registers as operands.
+  - S-type : For instructions used for storing operations.
+
+So, it is system call interface used by the application program to access the registers specific to architecture. Overhere the architecture is RISC-V, so to access 32 registers of RISC-V below is the table which shows the calling convention (ABI name) given to registers for the application programmer to use.
+
+
+### Load,Add And Store Instructions
+```
+ld x8,16(x23)
+```
+here ld is for load doubleword,x8 shows destination register (rd),16 is offset,x23 is source register . This is I type Instructions :
+
+![fig-1]()
+```add x8,x29,x8
+```
+here add is function,x8 is destination register (rd),x29 & x8 is source register. This is R type Instructions :
+![fig-2]()
+```
+sd x8,8(x23)
+```
+here store is store doubleword,x8 is data registers,8 tell offset(immediate) ,x23 is source register. This is S type Instructions :
+![fig-3]()
+Here in each Instructions set we can see register are of 5 bits so total number of register = 2^5 = 32 registers
+![fig-4]()
+![fig-5]()
+
+### Example of ABI
+Consider the C code given below which calculates the sum from 1 to 9 :
+```
+#include<stdio.h>
+
+extern int load(int x, int y);
+
+int main()
+{
+    int result = 0;
+    int count = 9;
+    result = load(0x0,count+1);
+    printf("Sum of numbers from 1 to %d is %d\n",count,result);
+    
+}
+```
+
+Consider the assembly code (ASM) given below :
+```
+.section .text 
+.global load
+.type load, @function
+
+load:
+    add a4, a0, zero
+    add a2, a0, a1
+    add a3, a0, zero
+loop : add a4, a3, a4
+       addi a3, a3, 1
+       blt a3, a2, loop
+       add a0, a4, zero
+       ret
+```
+
+
+How to Perform
+```
+cd ~/RISCV-ISA/riscv_isa_labs/day_2/lab1/
+riscv64-unknown-elf-gcc -Ofast -mabi=lp64 -march=rv64i -o custom1_to9.o custom1_to_9.c load.S
+riscv64-unknown-elf-objdump -d custom1_to9.o | less
+spike pk custom1_to9.o
+```
+
+**Outputs of the Lab**
+![fig]()
+![fig]()
+
+### Lab to run c program on RISC-V CPU
+```
+cd ~/riscv_workshop_collaterals/labs/
+chmod 777 rv32im.sh
+./rv32im.sh  # Contains necessary commands to convert C to hex
+```
+**Output, Script(rv32im.sh) and firmare.hex**
+![fig]()
