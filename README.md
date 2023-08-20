@@ -72,8 +72,7 @@ int main()
     return 0;
 }
 ```
-
-![Screenshot from 2023-08-19 22-26-15](https://github.com/Priyanshiiitb/RISCV/assets/140998626/ede8172f-9fb5-4490-9426-2db462c03331)
+![fig-1](https://github.com/nitishkumar515/RISCV/assets/140998638/6d6cf2c1-ded9-49d0-8a61-6b872b7968b5)
 
 
 
@@ -83,7 +82,7 @@ int main()
 
 
 ### Data Representation
-![Screenshot from 2023-08-19 22-31-00](https://github.com/Priyanshiiitb/RISCV/assets/140998626/c9756e3b-275f-4eee-8653-154c47411dd0)
+![fig-2](https://github.com/nitishkumar515/RISCV/assets/140998638/c91401c1-99ea-426c-af45-c99803d4f6e0)
 
 
 In RISC-V and computer architecture in general, several terms relate to data representation and storage. Let's explore them:
@@ -159,8 +158,8 @@ riscv64-unknown-elf-gcc -Ofast -mabi=lp64 -march=rv64i -o unsigned.o unsigned.c
 spike  pk unsigned.o 
 ```
 
-**Output of the execution**
-![Screenshot from 2023-08-19 21-57-36](https://github.com/Priyanshiiitb/RISCV/assets/140998626/0b40237f-e5fb-44a9-a822-c0034721c795)
+![fig-3](https://github.com/nitishkumar515/RISCV/assets/140998638/1e364294-f239-4ce4-a85b-7b13615a5e24)
+
 
 
 #### Signed Numbers
