@@ -31,7 +31,7 @@ Once the toolchain is installed it is necessary to create a PATH variable in .ba
 gedit .bashrc
 ```
 
-#Type at last line
+Type at last line
 ```
 export PATH="/home/nitish/riscv_toolchain/riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14/bin:$PATH" 
 ```
