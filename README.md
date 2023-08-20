@@ -14,7 +14,6 @@ git clone https://github.com/kunalg123/riscv_workshop_collaterals.git
 cd riscv_workshop_collaterals
 chmod 777 run.sh
 ./run.sh
-
 cd ~/riscv_toolchain/iverilog/
 git checkout --track -b v10-branch origin/v10-branch
 git pull 
@@ -73,10 +72,6 @@ int main()
 }
 ```
 ![fig-1](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-1.png)
-
-
-
-
 
 
 
