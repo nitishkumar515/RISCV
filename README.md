@@ -267,15 +267,14 @@ loop : add a4, a3, a4
 
 How to Perform
 ```
-cd ~/RISCV-ISA/riscv_isa_labs/day_2/lab1/
 riscv64-unknown-elf-gcc -Ofast -mabi=lp64 -march=rv64i -o custom1_to9.o custom1_to_9.c load.S
 riscv64-unknown-elf-objdump -d custom1_to9.o | less
 spike pk custom1_to9.o
 ```
 
 **Outputs of the Lab**
-![fig]()
-![fig]()
+![fig-6]()
+![fig-7]()
 
 ### Lab to run c program on RISC-V CPU
 ```
@@ -285,3 +284,5 @@ chmod 777 rv32im.sh
 ```
 **Output, Script(rv32im.sh) and firmare.hex**
 ![fig]()
+### labworks
+Consider the C code given below which calculates the sum from 1 to 9 :
