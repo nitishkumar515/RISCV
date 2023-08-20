@@ -75,7 +75,6 @@ int main()
 
 
 
-
 ### Data Representation
 ![fig-2](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-2.png)
 
