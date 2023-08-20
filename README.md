@@ -1,25 +1,20 @@
 # RISCV
-## week 3
 ## Day-1
-## Day - 1 : Introduction to RISC-V ISA and GNU compiler toolchain
+## Introduction to RISC-V ISA and GNU compiler toolchain
 
 ### Tool Installation
 Install the dependencies using the following command :
 ```
-sudo apt-get install libboost-regex-dev
+sudo apt-get install libboost-all-dev
 ```
 
 **Steps to install the toolchain**
 ```
 git clone https://github.com/kunalg123/riscv_workshop_collaterals.git
 cd riscv_workshop_collaterals
-chmod +x run.sh
+chmod 777 run.sh
 ./run.sh
-```
 
-
-
-```
 cd ~/riscv_toolchain/iverilog/
 git checkout --track -b v10-branch origin/v10-branch
 git pull 
@@ -30,20 +25,23 @@ make
 sudo make install 
 ```
 
-Once the toolchain is installed it is necessary to create a PATH variable in bashrc file. To create the path variable follow the steps given below :
+Once the toolchain is installed it is necessary to create a PATH variable in .bashrc file. To create the path variable follow the steps given below :
 
 ```
 gedit .bashrc
-
+```
 
 #Type at last line
-export PATH="/home/name/riscv_toolchain/riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14/bin:$PATH" 
-
-# close the bashrc and type in terminal
+```
+export PATH="/home/nitish/riscv_toolchain/riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14/bin:$PATH" 
+```
+# close the .bashrc and type in terminal
+```
 source .bashrc
 ```
 ### Introduction to RISC-V ISA
-RISC-V ISA is a base integer ISA and must be present in any implemenatation along with some optional extension. The RISC-V has been designed to support extensive customization and specialization which can be extended with one or more optional instruction-set extensions, but the base integer instructions cannot be redefine. The different instructions included in RISC-V are listed below.
+* RISC-V ISA is a base integer ISA and must be present in any implemenatation along with some optional extension. * The RISC-V has been designed to support extensive customization and specialization which can be extended with one or more optional instruction-set extensions, but the base integer instructions cannot be redefine.
+* The different instructions included in RISC-V are listed below.
 
 Pseudo instructions - For e.g- mv,li,ret etc
 Base integer instruction (RV64I, RV32I)-For e.g-lui,addi etc
@@ -53,11 +51,7 @@ Application binary instruction
 Memory allocation and stack pointer
 The detail of the RISC-V instructions set manual can be found here.
 
-Each base integer set is characterized by the width of the register (XLEN) and size of the user address space. The most important advantage of RISC-V is that it is an open standard instruction which is easily available for academics and commercial purposes free of cost.
-
-
-
-
+* Each base integer set is characterized by the width of the register (XLEN) and size of the user address space. * * The most important advantage of RISC-V is that it is an open standard instruction which is easily available for academics and commercial purposes free of cost.
 
 
 
@@ -100,25 +94,33 @@ In RISC-V and computer architecture in general, several terms relate to data rep
 
 3. **Double Word:** - A double word is twice the size of a word. In RISC-V, for example, in RV32, a double word is 8 bytes (64 bits), and in RV64, a double word is 16 bytes (128 bits).
 
-4. **Least Significant Bit (LSB):** -  The least significant bit is the lowest-order bit in a binary representation. 
+4. **Least Significant Bit (LSB):** -  The least significant bit is the lowest-order bit in a binary representation as shown in above figure. 
 
-5. **Most Significant Bit (MSB):** -  The most significant bit is the highest-order bit in a binary representation. It has the greatest influence on the overall value of a number. The MSB is the bit that represents the largest power of two.
+5. **Most Significant Bit (MSB):** -  The most significant bit is the highest-order bit in a binary representation as shown in above figure. It has the greatest influence on the overall value of a number. The MSB is the bit that represents the largest power of two.
 
 
 6. **Endianess:** - Endianess refers to how multi-byte data is stored in memory. In a big-endian system, the most significant byte is stored at the lowest memory address, while in a little-endian system, the least significant byte is stored at the lowest memory address. RISC-V supports both big-endian and little-endian modes.
 
 7. **Byte addressing** -  is a memory addressing scheme used in computer systems to identify and access individual bytes of data within the computer's memory. In byte addressing, each individual byte in the memory has a unique address, allowing direct access to and manipulation of single bytes of data. In RISC-V, like in many other computer architectures, memory is byte-addressable.
 
-Understanding these terms is crucial when working with data representation, memory allocation, and programming in computer systems, including the RISC-V architecture.
+Understanding of these terms is crucial when working with data representation, memory allocation, and programming in computer systems, including the RISC-V architecture.
 
 
 ### Representation of Signed and Unsigned Numbers
 #### Unsigned Numbers
-Unsigned numbers don’t have any sign, these can contain only magnitude of the number. So, representation of unsigned binary numbers are all positive numbers only.
-Since there is no sign bit in this unsigned binary number, so N bit binary number represent its magnitude only. Zero (0) is also unsigned number. Every number in unsigned number representation has only one unique binary equivalent form, so this is unambiguous representation technique. The range of unsigned binary number is from  **0 to ((2^n)-1)**.
+* Unsigned numbers don’t have any sign, these can contain only magnitude of the number.
+*  So, representation of unsigned binary numbers are all positive numbers only.
+* Since there is no sign bit in this unsigned binary number, so N bit binary number represent its magnitude only.
+* Zero (0) is also unsigned number.
+* Every number in unsigned number representation has only one unique binary equivalent form, so this is unambiguous representation technique.
+* The range of unsigned binary number is from  **0 to ((2^n)-1)**.
 
 #### Signed Numbers
-Generally 2's complement representation is used for the signed numbers. 2’s complement of a number is obtained by inverting each bit of given number plus 1 to least significant bit (LSB). So, positive numbers are represented in binary form and negative numbers are represented in 2’s complement form. There is extra bit for sign representation. If value of sign bit is 0, then number is positive and you can directly represent it in simple binary form, but if value of sign bit 1, then number is negative and 2’s complement of given binary number should be taken. In this representation, zero (0) has only one (unique) representation which is always positive. The range of 2’s complement form is from  **(-2^(n-1))  to ((2^(n-1))-1)**.
+* Generally 2's complement representation is used for the signed numbers.
+* 2’s complement of a number is obtained by inverting each bit of given number plus 1 to least significant bit (LSB).
+* So, positive numbers are represented in binary form and negative numbers are represented in 2’s complement form. * There is extra bit for sign representation.
+* If value of sign bit is 0, then number is positive and you can directly represent it in simple binary form, but if value of sign bit 1, then number is negative and 2’s complement of given binary number should be taken.
+* In this representation, zero (0) has only one (unique) representation which is always positive. The range of 2’s complement form is from  **(-2^(n-1))  to ((2^(n-1))-1)**.
 
 ### Illustration of Signed and Unsigned Numbers in RISC-V
 #### Unsigned Numbers
