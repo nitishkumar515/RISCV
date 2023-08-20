@@ -34,7 +34,7 @@ Type at last line
 ```
 export PATH="/home/nitish/riscv_toolchain/riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14/bin:$PATH" 
 ```
-close the .bashrc and type in terminal
+close the .bashrc file and type in terminal
 ```
 source .bashrc
 ```
