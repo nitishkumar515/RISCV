@@ -355,14 +355,14 @@ The TL-Verilog code is shown below :
 ```
    $out = $sel ? $in1 : $in0;
 ```
-![fig-36]()
+![fig-36](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-36.png)
 
 ### 2:1 Vector Multiplexer
 The TL-Verilog code is shown below :
 ```
    $out[7:0] = $sel[2:0] ? $in1[7:0] : $in0[7:0];
 ```
-![fig-37]()
+![fig-37](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-37.png)
 ### Calculator
 The TL-Verilog code is shown below :
 ```
@@ -380,7 +380,7 @@ $sub[31:0] = $val1-$val2;
 
 $out[31:0] = $op[1] ? ($op[0] ? $div : $add):($op[0] ? $mul : $sub) ;
 ```
-![fig-38]()
+![fig-38](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-38.png)
 ## Sequential Circuits
 
 
