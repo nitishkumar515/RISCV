@@ -396,10 +396,10 @@ The TL-Verilog code for fibonacci series is shown below :
    $num[31:0] = $reset ? 1 : (>>1$num + >>2$num);
 ```
 The block digram of Fibonacci series is shown below :
-![fig-39]()
+![fig-39](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-39.png)
 
 The block diagram of the fibonacci series generator using makerchip IDE shown below :
-![fig-40]()
+![fig-40](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-40.png)
 ### Free running counter
 The TL-Verilog code for free running counter is shown below :
 ```
@@ -408,7 +408,7 @@ The TL-Verilog code for free running counter is shown below :
 ```
 The block diagram of the free running counter is shown below :
 
-![fig-331]()
+![fig-331](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-331.png)
 ### Sequential Calculator
 The TL-verilog code for sequential calculator is shown below :
 ```
@@ -428,5 +428,8 @@ The TL-verilog code for sequential calculator is shown below :
    
    $out[31:0] = $reset ? 32'h0 : ($op[1] ? ($op[0] ? $div : $prod):($op[0] ? $diff : $sum));
 ```
-![fig-332]()
-![fig-333]()
+![fig-332](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-332.png)
+
+![fig-333](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-333.png)
+
+## Pipelining
