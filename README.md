@@ -291,4 +291,13 @@ chmod 777 rv32im.sh
 **Output, Script(rv32im.sh) and firmare.hex**
 ![Screenshot from 2023-08-21 10-01-15](https://github.com/nitishkumar515/RISCV/assets/140998638/c259d0e9-25c7-48e2-b804-d73845d13996)
 
+Input hex file to sent through verilog code:
+
+firmware.hex:
+![Screenshot from 2023-08-21 10-07-21](https://github.com/nitishkumar515/RISCV/assets/140998638/26a33bb5-f935-46e4-a46d-a4f3aeebce4a)
+
+firmware32.hex:
+![Screenshot from 2023-08-21 10-09-05](https://github.com/nitishkumar515/RISCV/assets/140998638/c9f03098-910c-4482-8c9f-f074fccce32c)
+
+
 
