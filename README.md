@@ -271,8 +271,8 @@ loop : add a4, a3, a4
 How to Perform
 ```
 riscv64-unknown-elf-gcc -Ofast -mabi=lp64 -march=rv64i -o custom1_to9.o custom1_to_9.c load.S
-riscv64-unknown-elf-objdump -d custom1_to9.o | less
 spike pk custom1_to9.o
+riscv64-unknown-elf-objdump -d custom1_to9.o | less
 ```
 
 **Outputs of the Lab**
