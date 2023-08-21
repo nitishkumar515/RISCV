@@ -289,6 +289,6 @@ chmod 777 rv32im.sh
 ./rv32im.sh  # Contains necessary commands to convert C to hex
 ```
 **Output, Script(rv32im.sh) and firmare.hex**
-![fig]()
-### labworks
-Consider the C code given below which calculates the sum from 1 to 9 :
+![Screenshot from 2023-08-21 10-01-15](https://github.com/nitishkumar515/RISCV/assets/140998638/c259d0e9-25c7-48e2-b804-d73845d13996)
+
+
