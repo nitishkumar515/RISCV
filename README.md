@@ -277,8 +277,10 @@ spike pk custom1_to9.o
 ```
 
 **Outputs of the Lab**
-![fig-6]()
-![fig-7]()
+![Screenshot from 2023-08-21 09-05-21](https://github.com/nitishkumar515/RISCV/assets/140998638/e1e88f7a-846d-4a65-9829-978ab6ce135d)
+
+![Screenshot from 2023-08-21 09-11-48](https://github.com/nitishkumar515/RISCV/assets/140998638/065967eb-00f4-4aa7-b9fc-42893f50a8de)
+
 
 ### Lab to run c program on RISC-V CPU
 ```
