@@ -382,5 +382,51 @@ $out[31:0] = $op[1] ? ($op[0] ? $div : $add):($op[0] ? $mul : $sub) ;
 ```
 ![fig-38](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-38.png)
 ## Sequential Circuits
+* sequential circuit is a type of digital circuit that employs memory elements to store information and produce outputs based not only on the current input values but also on the circuit's previous state.
+ * Unlike combinational circuits, which generate outputs solely based on the present input values, sequential circuits incorporate feedback loops and memory elements like flip-flops or registers to maintain and utilize their internal state.
 
 
+
+
+## Basic Sequential Circuits in Makerchip
+### Fibonacci Series
+The TL-Verilog code for fibonacci series is shown below :
+```
+ $reset = *reset;
+   $num[31:0] = $reset ? 1 : (>>1$num + >>2$num);
+```
+The block digram of Fibonacci series is shown below :
+![fig-39]()
+
+The block diagram of the fibonacci series generator using makerchip IDE shown below :
+![fig-40]()
+### Free running counter
+The TL-Verilog code for free running counter is shown below :
+```
+   $reset = *reset;
+   $cnt[31:0] = $reset ? 0 : (>>1$cnt + 1);
+```
+The block diagram of the free running counter is shown below :
+
+![fig-331]()
+### Sequential Calculator
+The TL-verilog code for sequential calculator is shown below :
+```
+ $reset = *reset;
+   
+   $cnt2[2:0] = $reset ? 0 : (>>1$cnt2 + 1);
+   $cnt3[1:0] = $reset ? 0 : (>>1$cnt3 + 1);
+   
+   $op[1:0] = $cnt3;
+   
+   $val1[31:0] = >>1$out;
+   $val2[31:0] = $cnt2;
+   $sum[31:0] = $val1+$val2;
+   $diff[31:0] = $val1-$val2;
+   $prod[31:0] = $val1*$val2;
+   $div[31:0] = $val1/$val2;
+   
+   $out[31:0] = $reset ? 32'h0 : ($op[1] ? ($op[0] ? $div : $prod):($op[0] ? $diff : $sum));
+```
+![fig-332]()
+![fig-333]()
