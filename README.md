@@ -336,10 +336,10 @@ The TL-Verilog code is shown below :
 ```
 ![fig-33](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-33.png)
 
-XOR gate
+### OR gate
 The TL-Verilog code is shown below :
 ```
-   $out = $in1 ^ $in2;
+   $out = $in1 || $in2;
 ```
 ![fig-34](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-34.png)
 
@@ -360,7 +360,7 @@ The TL-Verilog code is shown below :
 ### 2:1 Vector Multiplexer
 The TL-Verilog code is shown below :
 ```
-   $out[7:0] = $sel ? $in1[7:0] : $in0[7:0];
+   $out[7:0] = $sel[2:0] ? $in1[7:0] : $in0[7:0];
 ```
 ![fig-37]()
 ### Calculator
