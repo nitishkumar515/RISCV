@@ -216,23 +216,22 @@ ld x8,16(x23)
 ```
 here ld is for load doubleword,x8 shows destination register (rd),16 is offset,x23 is source register . This is I type Instructions :
 
-![fig-1](https://github.com/nitishkumar515/RISCV/assets/140998638/bc595942-b143-4d73-9ef5-84d56bc68a8d)
+![fig-1](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-2-1.png)
 
 ```add x8,x29,x8
 ```
 here add is function,x8 is destination register (rd),x29 & x8 is source register. This is R type Instructions :
-![fig-2](https://github.com/nitishkumar515/RISCV/assets/140998638/e6bb4e4a-2eac-4619-a810-452f0a705cf3)
+![fig-2](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-2-2.png)
 ```
 sd x8,8(x23)
 ```
 here store is store doubleword,x8 is data registers,8 tell offset(immediate) ,x23 is source register. This is S type Instructions :
-![fig-3](https://github.com/nitishkumar515/RISCV/assets/140998638/173fc3fc-30c2-44dc-b348-e96b7e4869b3)
+![fig-3](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-2-3.png)
 
 Here in each Instructions set we can see register are of 5 bits so total number of register = 2^5 = 32 registers
-![fig-4](https://github.com/nitishkumar515/RISCV/assets/140998638/702ecc78-cc1d-44dd-94d3-dbc0b1c15f59)
+![fig-4](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-2-4.png)
 
-![fig-5](https://github.com/nitishkumar515/RISCV/assets/140998638/3ab4d12c-a9f6-49f5-8fe0-de058596605e)
-
+![fig-5](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-2-5.png)
 
 ### Example of ABI
 Consider the C code given below which calculates the sum from 1 to 9 :
@@ -277,9 +276,9 @@ spike pk custom1_to9.o
 ```
 
 **Outputs of the Lab**
-![Screenshot from 2023-08-21 09-05-21](https://github.com/nitishkumar515/RISCV/assets/140998638/e1e88f7a-846d-4a65-9829-978ab6ce135d)
+![fig-6](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-2-6.png)
 
-![Screenshot from 2023-08-21 09-11-48](https://github.com/nitishkumar515/RISCV/assets/140998638/065967eb-00f4-4aa7-b9fc-42893f50a8de)
+![fig-2-7](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-2-7.png)
 
 
 ### Lab to run c program on RISC-V CPU
@@ -289,17 +288,17 @@ chmod 777 rv32im.sh
 ./rv32im.sh  # Contains necessary commands to convert C to hex
 ```
 **Output, Script(rv32im.sh) and firmare.hex**
-![Screenshot from 2023-08-21 10-01-15](https://github.com/nitishkumar515/RISCV/assets/140998638/c259d0e9-25c7-48e2-b804-d73845d13996)
+![fig-2-8](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-2-8.png)
 
 Input hex file to sent through verilog code:
 
 firmware.hex:
 
-![Screenshot from 2023-08-21 10-07-21](https://github.com/nitishkumar515/RISCV/assets/140998638/26a33bb5-f935-46e4-a46d-a4f3aeebce4a)
+![fig-2-9](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-2-9.png)
 
 firmware32.hex:
 
-![Screenshot from 2023-08-21 10-09-05](https://github.com/nitishkumar515/RISCV/assets/140998638/c9f03098-910c-4482-8c9f-f074fccce32c)
+![fig-2-10](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-2-10.png)
 
 
 
