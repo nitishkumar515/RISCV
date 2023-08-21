@@ -441,38 +441,104 @@ The block diagram of sequential calculator using makerchip IDE is shown below :
 ### Pipelined Pythagorean
 The TL-Verilog code is given below:
 ```
-\m5_TLV_version 1d: tl-x.org
-\m5
-   
-   // =================================================
-   // Welcome!  New to Makerchip? Try the "Learn" menu.
-   // =================================================
-   
-   //use(m5-1.0)   /// uncomment to use M5 macro library.
+m4_TLV_version 1d: tl-x.org
 \SV
-   // Macro providing required top-level module definition, random
-   // stimulus support, and Verilator config.
-   m5_makerchip_module   // (Expanded in Nav-TLV pane.)
+   `include "sqrt32.v";
+   m4_makerchip_module
+\TLV
    
-   `include "sqrt32.v"
+   |calc
+      
+      // Pythagora's Theorem
+      @1
+         $aa_sq[7:0] = $aa[3:0] ** 2;
+         $bb_sq[7:0] = $bb[3:0] ** 2;
+      // [+] @2
+         $cc_sq[8:0] = $aa_sq + $bb_sq;
+      // [+] @3
+         $cc[4:0] = sqrt($cc_sq);
+
+
+      // Print
+         \SV_plus
+            always_ff @(posedge clk) begin
+               \$display("sqrt((\%2d ^ 2) + (\%2d ^ 2)) = \%2d", $aa, $bb, $cc);
+            end
+
+   // Stop simulation.
+   *passed = *cyc_cnt > 40;
+\SV
+endmodule
+```
+@ -- Represents the pipelined stage number.
+
+![pipe-1]()
+Error Detection Demo
+The TL-Verilog code is given below :
+```
+ m5_makerchip_module   // (Expanded in Nav-TLV pane.)
 \TLV
    $reset = *reset;
-   $aa = $rand1[3:0];
-   $bb = $rand2[3:0];
-   |calc
+   |comp
       @1
-         $aa_sq[31:0] = $aa * $aa;
+        $error1 = $bad_input || $illegal_optput;
+   
       @2
-         $bb_sq[31:0] = $bb * $bb;
+        $error2 = $error1 || $overflow;
       @3
-         $cc_sq[31:0] = $aa_sq + $bb_sq;
-      @4
-         $out[31:0] = sqrt($cc_sq);
+        $error3 = $error2 || $div_by_zero;
+      
+   
+   //...
    
    // Assert these to end simulation (before Makerchip cycle limit).
-   *passed = *cyc_cnt > 40;
-   *failed = 1'b0;
+   //*passed = *cyc_cnt > 40;
+   //*failed = 1'b0;
 \SV
    endmodule
 ```
-![pipe-1]()
+![error-1]()
+
+### Counter and Calculator in Pipeline
+The block diagram of the counter with calculator in pipeline is shown below :
+
+The TL-Verilog code is given below :
+```
+ $reset = *reset;
+   $op[1:0] = $random[1:0];
+   $val2[31:0] = $rand2[3:0];
+   
+   |calc
+      @1
+         $val1[31:0] = >>1$out;
+         $sum[31:0] = $val1+$val2;
+         $diff[31:0] = $val1-$val2;
+         $prod[31:0] = $val1*$val2;
+         $div[31:0] = $val1/$val2;
+         $out[31:0] = $reset ? 32'h0 : ($op[1] ? ($op[0] ? $div : $prod):($op[0] ? $diff : $sum));
+         
+         $cnt[31:0] = $reset ? 0 : (>>1$cnt + 1);
+```
+### 2 Cycle Calculator
+The block diagram of the 2 cycle calculator is shown below:
+![pipe-3]()
+
+The TL-verilog code is shown below :
+```
+$reset = *reset;
+   
+   |calc
+      @1
+         $val1[31:0] = >>1$out;
+	 $val2[31:0] = $rand2[3:0];
+
+         $sum[31:0] = $val1+$val2;
+         $diff[31:0] = $val1-$val2;
+         $prod[31:0] = $val1*$val2;
+         $quot[31:0] = $val1/$val2;
+
+         $out[31:0] = $reset ? 0 : ($op[1] ? ($op[0] ? $div : $prod):($op[0] ? $diff : $sum));
+         
+         $cnt[31:0] = $reset ? 0 : >>1$cnt + 1; 
+```
+![pipe-4]()
