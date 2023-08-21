@@ -472,7 +472,8 @@ endmodule
 ```
 @ -- Represents the pipelined stage number.
 
-![pipe-1]()
+![pipe-1](https://github.com/nitishkumar515/RISCV/blob/main/day-1/pytha.png)
+
 Error Detection Demo
 The TL-Verilog code is given below :
 ```
@@ -497,7 +498,7 @@ The TL-Verilog code is given below :
 \SV
    endmodule
 ```
-![error-1]()
+![error-1](https://github.com/nitishkumar515/RISCV/blob/main/day-1/error.png)
 
 ### Counter and Calculator in Pipeline
 The block diagram of the counter with calculator in pipeline is shown below :
