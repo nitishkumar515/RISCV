@@ -318,43 +318,51 @@ Consider the verilog code for multiplexer gicen below.
 assign f = s ? x1 : x0;
 ```
 This code uses ternary operator that will realize a simple 2:1 multiplexer hardware in which the output f follows x1 if s is 1 otherwise it will follow x0. The harware and logic gate representation l is shown below : 
-![fig-31]
+
+![fig-31](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-31.png)
+
 The higher bit multiplexers can also be realized using the coditional operator. Consider the 4:1 multiplexer code given below :
 ```
 assign f = sel[0] ? a : (sel[1] ? b : (sel[2] ? c : d));
 ```
 This code creates a priority for the inputs with input a getting the highest and input d getting the least. Instead of realizing as a single 4:1 multiplexer it will create a series of 2:1 multiplexers. In this case the sel is a one hot vector i.e, only one of the bit in the sel will be high at a time. The hardware realization is shown below :
-![fig-32]()
+
+![fig-32](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-32.png)
+
 ### AND Gate Example on Makerchip IDE
 The TL-Verilog code is shown below :
 ```
  $out = $in1 && $in2;
 ```
-![fig-33]()
+![fig-33](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-33.png)
+
 XOR gate
 The TL-Verilog code is shown below :
 ```
    $out = $in1 ^ $in2;
 ```
-![fig-34]
+![fig-34](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-34.png)
+
 ### Vector Addition
 The TL-Verilog code is shown below :
 ```
    $out[4:0] = $in1[3:0] + $in2[3:0];
 ```
-![fig-34]()
+![fig-35](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-35.png)
+
 ### 2:1 Multiplexer
 The TL-Verilog code is shown below :
 ```
    $out = $sel ? $in1 : $in0;
 ```
-![fig-44]()
+![fig-36]()
+
 ### 2:1 Vector Multiplexer
 The TL-Verilog code is shown below :
 ```
    $out[7:0] = $sel ? $in1[7:0] : $in0[7:0];
 ```
-![fig-45]()
+![fig-37]()
 ### Calculator
 The TL-Verilog code is shown below :
 ```
@@ -372,7 +380,7 @@ $sub[31:0] = $val1-$val2;
 
 $out[31:0] = $op[1] ? ($op[0] ? $div : $add):($op[0] ? $mul : $sub) ;
 ```
-![fig-46]()
+![fig-38]()
 ## Sequential Circuits
 
 
