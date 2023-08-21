@@ -300,3 +300,79 @@ firmware32.hex:
 ![fig-2-10](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-2-10.png)
 
 ## Day - 3 : Digital Logic with TL-Verilog and Makerchip
+### Introduction 
+* You can code, compile, simulate, and debug Verilog designs, all from your browser.
+* Makerchip is a free online environment for developing high-quality integrated circuits.
+* Your code, block diagrams, and waveforms are tightly integrated.
+* Projects on Makerchip can be completely designed using TL-Verilog.
+* Transaction Level - Verilog standard is an extension of Verilog which has various advantages like simpler syntax, shorter codes and easy pipelining
+  
+* All the examples shown below are done on Makerchip IDE using TL-verilog
+### Lab for Combinational logic
+Makerchip IDE
+Makerchip is a free online environment for developing high-quality integrated circuits. You can code, compile, simulate, and debug Verilog designs, all from your browser. Your code, block diagrams, and waveforms are tightly integrated.
+## Logic Gates
+### Multiplexer Using Ternary Operator
+Consider the verilog code for multiplexer gicen below.
+```
+assign f = s ? x1 : x0;
+```
+This code uses ternary operator that will realize a simple 2:1 multiplexer hardware in which the output f follows x1 if s is 1 otherwise it will follow x0. The harware and logic gate representation l is shown below : 
+![fig-31]
+The higher bit multiplexers can also be realized using the coditional operator. Consider the 4:1 multiplexer code given below :
+```
+assign f = sel[0] ? a : (sel[1] ? b : (sel[2] ? c : d));
+```
+This code creates a priority for the inputs with input a getting the highest and input d getting the least. Instead of realizing as a single 4:1 multiplexer it will create a series of 2:1 multiplexers. In this case the sel is a one hot vector i.e, only one of the bit in the sel will be high at a time. The hardware realization is shown below :
+![fig-32]()
+### AND Gate Example on Makerchip IDE
+The TL-Verilog code is shown below :
+```
+ $out = $in1 && $in2;
+```
+![fig-33]()
+XOR gate
+The TL-Verilog code is shown below :
+```
+   $out = $in1 ^ $in2;
+```
+![fig-34]
+### Vector Addition
+The TL-Verilog code is shown below :
+```
+   $out[4:0] = $in1[3:0] + $in2[3:0];
+```
+![fig-34]()
+### 2:1 Multiplexer
+The TL-Verilog code is shown below :
+```
+   $out = $sel ? $in1 : $in0;
+```
+![fig-44]()
+### 2:1 Vector Multiplexer
+The TL-Verilog code is shown below :
+```
+   $out[7:0] = $sel ? $in1[7:0] : $in0[7:0];
+```
+![fig-45]()
+### Calculator
+The TL-Verilog code is shown below :
+```
+ $reset = *reset;
+   
+   
+   $op[1:0] = $random[1:0];
+$val1[31:0] = $rand[3:0];
+$val2[31:0] = $rand[3:0];
+
+$div[31:0] = $val1/$val2;
+$add[31:0] = $val1+$val2;
+$mul[31:0] = $val1*$val2;
+$sub[31:0] = $val1-$val2;
+
+$out[31:0] = $op[1] ? ($op[0] ? $div : $add):($op[0] ? $mul : $sub) ;
+```
+![fig-46]()
+## Sequential Circuits
+
+
