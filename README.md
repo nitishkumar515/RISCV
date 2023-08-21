@@ -294,9 +294,11 @@ chmod 777 rv32im.sh
 Input hex file to sent through verilog code:
 
 firmware.hex:
+
 ![Screenshot from 2023-08-21 10-07-21](https://github.com/nitishkumar515/RISCV/assets/140998638/26a33bb5-f935-46e4-a46d-a4f3aeebce4a)
 
 firmware32.hex:
+
 ![Screenshot from 2023-08-21 10-09-05](https://github.com/nitishkumar515/RISCV/assets/140998638/c9f03098-910c-4482-8c9f-f074fccce32c)
 
 
