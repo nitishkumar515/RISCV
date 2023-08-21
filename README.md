@@ -299,7 +299,7 @@ firmware32.hex:
 
 ![fig-2-10](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-2-10.png)
 
-## Day-3
+## Day-3: Digital Logic with TL-Verilog and Makerchip
 
 
 
