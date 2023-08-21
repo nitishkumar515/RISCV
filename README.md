@@ -428,6 +428,8 @@ The TL-verilog code for sequential calculator is shown below :
    
    $out[31:0] = $reset ? 32'h0 : ($op[1] ? ($op[0] ? $div : $prod):($op[0] ? $diff : $sum));
 ```
+The block diagram of sequential calculator using makerchip IDE is shown below :
+
 ![fig-332](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-332.png)
 
 ![fig-333](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-333.png)
