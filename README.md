@@ -522,7 +522,7 @@ The TL-Verilog code is given below :
 ```
 ### 2 Cycle Calculator
 The block diagram of the 2 cycle calculator is shown below:
-![pipe-3]()
+![pipe-3](https://github.com/nitishkumar515/RISCV/blob/main/day-1/pipe3.png)
 
 The TL-verilog code is shown below :
 ```
@@ -542,7 +542,7 @@ $reset = *reset;
          
          $cnt[31:0] = $reset ? 0 : >>1$cnt + 1; 
 ```
-![pipe-4]()
+![pipe-4](https://github.com/nitishkumar515/RISCV/blob/main/day-1/pipe4.png)
 
 
 ### Validity
