@@ -575,3 +575,5 @@ The TL-Verilog code is given below:
 Once the valid signal is asserted the previous value of result will be added with the current value and it result will get updated otherwise the previous value is retained.
 
 ![vailidity](https://github.com/nitishkumar515/RISCV/blob/main/day-1/vailidity.png)
+## Day 4-Basic RISC-V CPU micro-architecture
+### Basic RISC-V CPU microarchitecture
