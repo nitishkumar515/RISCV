@@ -543,3 +543,35 @@ $reset = *reset;
          $cnt[31:0] = $reset ? 0 : >>1$cnt + 1; 
 ```
 ![pipe-4]()
+
+
+### Validity
+* Validity is TL-verilog means signal indicates validity of transaction and described as "when" scope else it will work as don't care. Denoted as ?$valid.
+* Validity provides :
+* Easier debug
+* Cleaner design
+* Better error checking
+* Automated Clock gating
+### Illustration of Validity
+#### Distance Accumulator
+The block diagram of the distance accumulator is shown below :
+
+The TL-Verilog code is given below:
+```
+ calc
+      @1
+         $reset = *reset;
+      ?$valid
+         @1
+            $aa_sq[31:0] = $aa[3:0] * $aa;
+            $bb_sq[31:0] = $bb[3:0] * $bb;
+         @2
+            $cc_sq[31:0] = $aa_sq + $bb_sq;
+         @3
+            $out[31:0] = sqrt($cc_sq);
+      @4
+         $tot_dist[31:0] = $reset ? '0 : ($valid ? (>>1$tot_dist + $out) : $RETAIN);
+```
+Once the valid signal is asserted the previous value of result will be added with the current value and it result will get updated otherwise the previous value is retained.
+
+![vailidity](https://github.com/nitishkumar515/RISCV/blob/main/day-1/vailidity.png)
