@@ -737,9 +737,9 @@ output :
 
 viz: 
 
-![fig-417]()
+![fig-417](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-417.png)
 
 Correct fetch Block Diagram :
 
-![fig-418]()
+![fig-418](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-418.png)
 
