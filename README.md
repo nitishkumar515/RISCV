@@ -583,7 +583,7 @@ The block diagram of a basic RISC-V microarchitecture is as shown in figure belo
 * Commented code for register file and memory.
 * Visualization.
 
-![fig-411]()
+![fig-411](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-411.png)
 
 ## Fetch and Decode
 Designing of processor is based on three core steps fetch, decode and execute :
