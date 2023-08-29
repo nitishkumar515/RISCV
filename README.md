@@ -578,6 +578,7 @@ Once the valid signal is asserted the previous value of result will be added wit
 ## Day 4-Basic RISC-V CPU micro-architecture
 ### Basic RISC-V CPU microarchitecture
 The block diagram of a basic RISC-V microarchitecture is as shown in figure below. Now, using the Makerchip platform the implementation of the RISC-V microarchitecture or core is done. For starting the implementation a starter code present in reference is used. The starter code consist of -
+
 * A simple RISC-V assembler.
 * An instruction memory containing the sum 1..9 test program.
 * Commented code for register file and memory.
@@ -586,12 +587,15 @@ The block diagram of a basic RISC-V microarchitecture is as shown in figure belo
 ![fig-411](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-411.png)
 
 ## Fetch and Decode
-Designing of processor is based on three core steps fetch, decode and execute :
+Designing of processor is based on three core steps 
+* fetch
+* decode
+* execute 
 
 Here we gonna design RiscV Cpu Core for which block diagram is given below :
-![fig4112]()
+![fig412]()
 
-## Template For Running Viz:
+## Template For Running Vizualization:
 ```
 \m4_TLV_version 1d: tl-x.org
 \SV
