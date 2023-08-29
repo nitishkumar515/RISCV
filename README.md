@@ -780,9 +780,9 @@ Correct fetch Block Diagram :
    m4+cpu_viz(@4)
 ```
 output:
-![fig-419]()
+![fig-419](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-419.png)
 viz:
-![fig-420]()
+![fig-420](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-420.png)
 
 ### Decode
 For decoding a particular instruction, it is necessary that the isntruction type and format is known to the processor. The decoding is a crucial part and has to be done properly according to the given format to avoid error. There are 6 instructions type in RISC-V :
@@ -794,14 +794,14 @@ For decoding a particular instruction, it is necessary that the isntruction type
 5. Upper immediate (U) type
 6. Jump (J) type
 
-![fig-421]()
+![fig-421](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-421.png)
 
 Following the decoding of the above, the instruction immediate decode for all the above, except the register type is added. The 6 others instruction format/fields including the opcode, 2 source register, destination register, funct3 and funct7 decode is included. Next the instruction field decode of the different instruction type is inserted to ensure that only valid registers are used. Finally the base instruction set decode for the various fields is incorporated.
-![fig-422]()
+![fig-422](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-422.png)
 
 Instruction Type Decode Block diagram:
 
-![fig-423]()
+![fig-423](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-423.png)
 
 ```
 @1
@@ -822,14 +822,14 @@ Instruction Type Decode Block diagram:
          $is_b_instr = $instr[6:2] ==? 5'b11000;
 ```
 output:
-![fig-424]()
+![fig-424](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-424.png)
 
 viz:
 
-![fig-425]()
+![fig-425](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-425.png)
 
 ## LAB ON INSTRUCTION IMMEDIATE DECODE
-![fig-426]()
+![fig-426](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-426.png)
 ```
 		      $imm[31:0] = $is_i_instr ? {{21{$instr[31]}}, $instr[30:20]} :
                       $is_s_instr ? {{21{$instr[31]}}, $instr[30:25], $instr[11:7]} :
@@ -839,13 +839,13 @@ viz:
                                     32'b0;
 ```
 output:
-![fig-427]()
+![fig-427](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-427.png)
 
 viz:
 
-![fig-428]()
+![fig-428](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-428.png)
 ## LAB ON INSTRUCTION DECODE
-![fig-429]()
+![fig-429](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-429.png)
 ```
 	 $rs2[4:0] = $instr[24:20];
          $rs1[4:0] = $instr[19:15];
@@ -857,13 +857,13 @@ viz:
 ```
 output:
 
-![fig-430]()
+![fig-430](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-430.png)
 
 viz:
 
-![fig-431]()
+![fig-431](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-431.png)
 ## Lab To Decode Instruction Field Based
-![fig-432]()
+![fig-432](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-432.png)
 ```
 	$rs2_valid = $is_r_instr || $is_s_instr || $is_b_instr;
          ?$rs2_valid
@@ -886,11 +886,11 @@ viz:
             $rd[4:0] = $instr[11:7];
 ```
 output:
-![fig-433]()
+![fig-433](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-433.png)
 
 viz:
 
-![fig-434]()
+![fig-434](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-434.png)
 ## LAB ON Individual Instruction Decode
 ```
 	 $dec_bits [10:0] = {$funct7[5], $funct3, $opcode};
@@ -904,12 +904,12 @@ viz:
          $is_add = $dec_bits ==? 11'b0_000_0110011;
 
 ```
-![fig-435]()
+![fig-435](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-435.png)
 output:
 
-![fig-436]()
+![fig-436](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-436.png)
 
 viz:
 
-![fig-437]()
+![fig-437](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-437.png)
 
