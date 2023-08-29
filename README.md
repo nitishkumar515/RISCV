@@ -698,7 +698,7 @@ output :
 During the fetch stage, processors fetches the instruction from the memory to the address pointed by the program counter. The program counters holds the address of the next stage, in our case it is after 4 cycle and the instruction memory holds the set of instruction to be executed. The snapshot of the fetch stage is shown below.
 
 Fetch Block diagram part 1:
-![fig415]()
+![fig415](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-415.png)
 ```
 |cpu
       @0
@@ -733,4 +733,13 @@ Fetch Block diagram part 1:
 
 output :
 
-![fig416]()
+![fig416](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-416.png)
+
+viz: 
+
+![fig-417]()
+
+Correct fetch Block Diagram :
+
+![fig-418]()
+
