@@ -593,7 +593,7 @@ Designing of processor is based on three core steps
 * execute 
 
 Here we gonna design RiscV Cpu Core for which block diagram is given below :
-![fig412]()
+![fig412](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-412.png)
 
 ## Template For Running Vizualization:
 ```
@@ -671,7 +671,7 @@ Here we gonna design RiscV Cpu Core for which block diagram is given below :
 ```
 ## PC Logic
 The Program Counter, often referred to as the "PC," is a fundamental component of a processor that keeps track of the address of the next instruction to be executed. In the RISC-V architecture, the PC is typically called "pc" or "pc_reg." Overall, the PC logic is crucial for the control flow of a program. It determines which instruction will be executed next and how the program progresses. RISC-V, as a RISC (Reduced Instruction Set Computer) architecture, emphasizes simplicity and regularity in its design, which extends to its PC handling mechanisms.
-![fig413]()
+![fig413](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-413.png)
 ```
 |cpu
       @0
@@ -693,7 +693,7 @@ The Program Counter, often referred to as the "PC," is a fundamental component o
 
 output :
 
-![fig414]
+![fig414](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-414.png)
 ### fetch
 During the fetch stage, processors fetches the instruction from the memory to the address pointed by the program counter. The program counters holds the address of the next stage, in our case it is after 4 cycle and the instruction memory holds the set of instruction to be executed. The snapshot of the fetch stage is shown below.
 
