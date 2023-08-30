@@ -1385,18 +1385,8 @@ code:
 ```
 Below is the image:
 
-![fig-505]()
-![fig-506]()
-
-
-
-
-
-
-
-
-
-
+![fig-505](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-505.png)
+![fig-506](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-505.png)
 
 ## Word of Thanks
 I sciencerly thank **Mr. Kunal Gosh**(Founder/**VSD**) for helping me out to complete this flow smoothly.
