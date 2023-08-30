@@ -916,7 +916,7 @@ viz:
 ### Execute and Register file read/write
 The next task is to 'read from' and 'write into' the registers. In this operation, 2 read and write operation can be carried out simulatenously. The two src1_value/src2_value takes input from the two read register rf_read_data1/ rf_read_data2 and pass it on to the ALU unit. At present, ADDI and ADD is execute whose result is obtained in register rf_write_data. The figure below shows the input and output registers.
 
-![fig-438]()
+![fig-438](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-438.png)
 ```
 	 $rf_wr_en = 1'b0;
          $rf_wr_index[4:0] = 5'b0;
@@ -928,9 +928,9 @@ The next task is to 'read from' and 'write into' the registers. In this operatio
 
 ```
 The snapshot of the REGISTER FILE READ operation is included below:
-![fig-439]()
+![fig-439](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-439.png)
 ## Lab on Changes on Register File Read
-![fig-440]()
+![fig-440](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-440.png)
 ```
 	 $rf_wr_en = 1'b0;
          $rf_wr_index[4:0] = 5'b0;
@@ -944,25 +944,25 @@ The snapshot of the REGISTER FILE READ operation is included below:
          $src2_value[31:0] = $rf_rd_data2;
 ```
 The makerchip implementation output:
-![fig-441]()
+![fig-441](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-441.png)
 viz:
 
-![fig-442]()
+![fig-442](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-442.png)
 ### Lab on ALU
-![fig-443]
+![fig-443](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-443.png)
 ```
 $result[31:0] = $is_addi ? $src1_value + $imm :
                          $is_add ? $src1_value + $src2_value :
                          32'bx ;
 ```
 Implementation:
-![fig-444]()
+![fig-444](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-444.png)
 
 viz:
 
-![fig-445]()
+![fig-445](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-445.png)
 ### Lab On Register File Write
-![fig-446]()
+![fig-446](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-446.png)
 
 ```
 	 $rf_wr_en = $rd_valid && $rd != 5'b0;
@@ -970,7 +970,7 @@ viz:
          $rf_wr_data[31:0] = $result;
 ```
 Implementation:
-![fig-447]()
+![fig-447](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-447.png)
 
 ## ARRAYS
 In RISC-V, arrays are typically implemented using a combination of registers and memory. Arrays can be stored in memory, where each element is stored at a specific memory address. The processor can use load and store instructions to access these elements. For example, you might load an element from an array in memory into a register, perform operations on it, and then store the result back into memory.
@@ -980,7 +980,7 @@ Alternatively, arrays can also be partially stored in registers. If an array is 
 In both cases, whether an array is stored in memory or registers, the RISC-V architecture provides instructions to perform operations on array elements, such as loading, storing, and arithmetic operations.
 
 In summary, the register file in RISC-V architecture consists of a set of registers that are used for temporary storage and fast access to data, while arrays are collections of elements that can be stored either in memory or registers and are manipulated using load, store, and computation instructions.
-![fig-448]()
+![fig-448](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-448.png)
 
 ### Lab For Implementing Branch Instructions
 The next stage in the building of the RISC-V microarchitecture, is the addition of branches. Apart from immediate addition or addition, there may certain other conditions to be satisfied which requires to direct the PC to the branch target address. Now, we have simply added few branch instruction and updated the PC. Some Branching Instructions are :
@@ -1003,10 +1003,10 @@ The next stage in the building of the RISC-V microarchitecture, is the addition 
          `BOGUS_USE($taken_branch)
 
   ```
-  ![fig-449]()
+  ![fig-449](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-449.png)
 ### Lab For Complementing Branch Instructions
 Block Diagram:
-![fig-450]()
+![fig-450](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-450.png)
   code:
   ```
   	   //BRANCH INSTRUCTIONS 1
@@ -1023,13 +1023,13 @@ Block Diagram:
          $br_target_pc[31:0] = $pc +$imm;
   ```
   output:
-  ![fig-451]()
+  ![fig-451](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-451.png)
   ### Lab For Testbench
   code:
   ```
   *passed = |cpu/xreg[10]>>5$value == (1+2+3+4+5+6+7+8+9) ;
 
 ```
-![fig-452]()
+![fig-452](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-452.png)
 ## Day 5-Complete Pipelined RiscV CPU Micro-architecture
 ### Pipelining the CPU
