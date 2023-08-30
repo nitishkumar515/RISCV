@@ -1036,7 +1036,7 @@ Block Diagram:
 Now pipelining of the CPU core is done, which allows easy retiming and reduces functional bug to a great extent . Pipelining allows faster computaion. For pipelining as mentioned earlier we simply need to add @1, @2 and so on. The snapshot of the pipelining is as shown below. In TL verilog, another advantage is defining of pipeline in systematic order is not necessary. More inforamtion on timming abstract can be found in the IEEE paper "Timing-Abstract Circuit Design in Transaction-Level Verilog"  by Steeve Hoover in makerchip platform itself or else [here](https://ieeexplore.ieee.org/document/8119264).
 ### Lab on 3 cycle valid signal
 Block Diagram:
-![fig-501]()
+![fig-501](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-501.png)
 
 code:
 ```
@@ -1046,7 +1046,7 @@ $valid = $reset ? 1'b0 : ($start) ? 1'b1 : (>>3$valid) ;
          $start = $reset ? 1'b0 : ($start_int && !>>1$start_int);
 ```
 output:
-![fig-502]()
+![fig-502](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-502.png)
 ### Lab for generating valid signals for each instruction
 code:
 ```
@@ -1063,7 +1063,7 @@ Below is snapshot of pipelined CPU with a test case of assembly program which do
 *passed = |cpu/xreg[10]>>5$value == (1+2+3+4+5+6+7+8+9);
 
 ```
-![fig-503]()
+![fig-503](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-503.png)
 ### Load, store and data memory
 The load and store option is also included for which a 1 read/write data memory is added. Similar to branch instruction the load also has 3 cycle delay. For checking the functionality of load and store instructions a test bench is added and the data is on address 4 of Data Memory and loaded that value from Data Memory to r17.
 ### Code For Lab For Register File Bypass To Address Rd-After-Wr Hazard
@@ -1098,7 +1098,7 @@ Added test case to check fucntionality of load/store. Stored the summation of 1 
 ```
 Below is snapshot from Makerchip IDE after including load/store instructions:
 
-![fig-504]()
+![fig-504](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-504.png)
 
 
 
