@@ -1033,3 +1033,42 @@ Block Diagram:
 ![fig-452](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-452.png)
 ## Day 5-Complete Pipelined RiscV CPU Micro-architecture
 ### Pipelining the CPU
+Now pipelining of the CPU core is done, which allows easy retiming and reduces functional bug to a great extent . Pipelining allows faster computaion. For pipelining as mentioned earlier we simply need to add @1, @2 and so on. The snapshot of the pipelining is as shown below. In TL verilog, another advantage is defining of pipeline in systematic order is not necessary. More inforamtion on timming abstract can be found in the IEEE paper "Timing-Abstract Circuit Design in Transaction-Level Verilog"  by Steeve Hoover in makerchip platform itself or else [here](https://ieeexplore.ieee.org/document/8119264).
+
+
+
+
+
+
+
+
+
+## Word of Thanks
+I sciencerly thank **Mr. Kunal Gosh**(Founder/**VSD**) for helping me out to complete this flow smoothly.
+
+## Acknowledgement
+- Kunal Ghosh, VSD Corp. Pvt. Ltd.
+- Chatgpt
+- Kanish R,Colleague,IIIT B
+- Sumanto Kar,Sr. Project Technical Assistant , IIT Bombay
+- Pruthvi Parate,Colleague,IIIT B
+- Emil Jayanth Lal,Colleague,IIIT B
+- Bhargav Dv,Colleague,IIIT B
+- Sai Sampath,Colleague,IIIT B
+- Geetima Kachari,Assistant professor
+- Shivani Shah,IIIT B Senior
+- Bala Dhinesh,Engineer,Testorrent
+- Steve Hoover,Redwood Eda
+  
+## Reference 
+- https://www.vsdiat.com
+- https://en.wikipedia.org/wiki/Toolchain
+- https://en.wikipedia.org/wiki/GNU_toolchain
+- https://github.com/riscv/riscv-gnu-toolchain
+- https://github.com/KanishR1
+- https://github.com/riscv-software-src/homebrew-riscv/tree/main
+- https://redwoodeda.com
+- https://ieeexplore.ieee.org/document/8119264
+- https://github.com/shivanishah269
+- https://raw.githubusercontent.com/BalaDhinesh/RISC-V_MYTH_Workshop
+- https://github.com/stevehoover
