@@ -980,6 +980,7 @@ Alternatively, arrays can also be partially stored in registers. If an array is 
 In both cases, whether an array is stored in memory or registers, the RISC-V architecture provides instructions to perform operations on array elements, such as loading, storing, and arithmetic operations.
 
 In summary, the register file in RISC-V architecture consists of a set of registers that are used for temporary storage and fast access to data, while arrays are collections of elements that can be stored either in memory or registers and are manipulated using load, store, and computation instructions.
+![fig-448]()
 
 ### Lab For Implementing Branch Instructions
 The next stage in the building of the RISC-V microarchitecture, is the addition of branches. Apart from immediate addition or addition, there may certain other conditions to be satisfied which requires to direct the PC to the branch target address. Now, we have simply added few branch instruction and updated the PC. Some Branching Instructions are :
@@ -1002,7 +1003,10 @@ The next stage in the building of the RISC-V microarchitecture, is the addition 
          `BOGUS_USE($taken_branch)
 
   ```
-  ![fig-448]()
+  ![fig-449]()
+### Lab For Complementing Branch Instructions
+Block Diagram:
+![fig-450]()
   code:
   ```
   	   //BRANCH INSTRUCTIONS 1
@@ -1019,18 +1023,13 @@ The next stage in the building of the RISC-V microarchitecture, is the addition 
          $br_target_pc[31:0] = $pc +$imm;
   ```
   output:
-  ![fig-449]()
+  ![fig-451]()
   ### Lab For Testbench
   code:
   ```
   *passed = |cpu/xreg[10]>>5$value == (1+2+3+4+5+6+7+8+9) ;
 
 ```
-![fig-450]()
+![fig-452]()
 ## Day 5-Complete Pipelined RiscV CPU Micro-architecture
 ### Pipelining the CPU
-Now pipelining of the CPU core is done, which allows easy retiming and reduces functional bug to a great extent . Pipelining allows faster computaion. For pipelining as mentioned earlier we simply need to add @1, @2 and so on. The snapshot of the pipelining is as shown below. In TL verilog, another advantage is defining of pipeline in systematic order is not necessary. More inforamtion on timming abstract can be found in the IEEE paper "Timing-Abstract Circuit Design in Transaction-Level Verilog" by Steeve Hoover in makerchip platform itself or else here.
-  ### Lab For Complementing Branch Instructions
-  Block Diagram:
-
-  ![
