@@ -1034,6 +1034,73 @@ Block Diagram:
 ## Day 5-Complete Pipelined RiscV CPU Micro-architecture
 ### Pipelining the CPU
 Now pipelining of the CPU core is done, which allows easy retiming and reduces functional bug to a great extent . Pipelining allows faster computaion. For pipelining as mentioned earlier we simply need to add @1, @2 and so on. The snapshot of the pipelining is as shown below. In TL verilog, another advantage is defining of pipeline in systematic order is not necessary. More inforamtion on timming abstract can be found in the IEEE paper "Timing-Abstract Circuit Design in Transaction-Level Verilog"  by Steeve Hoover in makerchip platform itself or else [here](https://ieeexplore.ieee.org/document/8119264).
+### Lab on 3 cycle valid signal
+Block Diagram:
+![fig-501]()
+
+code:
+```
+	
+$valid = $reset ? 1'b0 : ($start) ? 1'b1 : (>>3$valid) ;
+         $start_int = $reset ? 1'b0 : 1'b1;
+         $start = $reset ? 1'b0 : ($start_int && !>>1$start_int);
+```
+output:
+![fig-502]()
+### Lab for generating valid signals for each instruction
+code:
+```
+//Generate valid signals for each instruction fields
+         $rs1_or_funct3_valid    = $is_r_instr || $is_i_instr || $is_s_instr || $is_b_instr;
+         $rs2_valid              = $is_r_instr || $is_s_instr || $is_b_instr;
+         $rd_valid               = $is_r_instr || $is_i_instr || $is_u_instr || $is_j_instr;
+         $funct7_valid           = $is_r_instr;
+
+```
+Below is snapshot of pipelined CPU with a test case of assembly program which does summation from 1 to 9 then stores to r10 of register file. In snapshot r10 = 45. Test case:
+
+```
+*passed = |cpu/xreg[10]>>5$value == (1+2+3+4+5+6+7+8+9);
+
+```
+![fig-503]()
+### Load, store and data memory
+The load and store option is also included for which a 1 read/write data memory is added. Similar to branch instruction the load also has 3 cycle delay. For checking the functionality of load and store instructions a test bench is added and the data is on address 4 of Data Memory and loaded that value from Data Memory to r17.
+### Code For Lab For Register File Bypass To Address Rd-After-Wr Hazard
+```
+//Register file bypass logic - data forwarding from ALU to resolve RAW dependence
+         $src1_value[31:0] = ((>>1$rf_wr_en) && (>>1$rd == $rs1 )) ? (>>1$result): $rf_rd_data1; 
+	 $src2_value[31:0] = ((>>1$rf_wr_en) && (>>1$rd == $rs2 )) ? (>>1$result) : $rf_rd_data2;
+```
+Code For Branches To Correct The Branch Target Path
+```
+ //Current instruction is valid if one of the previous 2 instructions were not (taken_branch or load or jump)
+         $valid = ~(>>1$valid_taken_br || >>2$valid_taken_br || >>1$is_load || >>2$is_load || >>2$jump_valid 	|| >>1$jump_valid);
+         
+         //Current instruction is valid & is a taken branch
+         $valid_taken_br = $valid && $taken_br;
+         
+         //Current instruction is valid & is a load
+         $valid_load = $valid && $is_load;
+         
+         //Current instruction is valid & is jump
+         $jump_valid = $valid && $is_jump;
+         $jal_valid  = $valid && $is_jal;
+         $jalr_valid = $valid && $is_jalr;
+
+	 $pc[31:0] = (>>1$reset) ? 32'b0 : (>>3$valid_taken_br) ? (>>3$br_tgt_pc) :  (>>3$int_pc)  ;
+         //$valid = $reset ? 1'b0 : ($start) ? 1'b1 : (>>3$valid) ; no need for this
+```
+Added test case to check fucntionality of load/store. Stored the summation of 1 to 9 on address 4 of Data Memory and loaded that value from Data Memory to r17.
+
+```
+*passed = |cpu/xreg[17]>>5$value == (1+2+3+4+5+6+7+8+9);
+```
+Below is snapshot from Makerchip IDE after including load/store instructions:
+
+![fig-504]()
+
+
 
 
 
