@@ -912,4 +912,125 @@ output:
 viz:
 
 ![fig-437](https://github.com/nitishkumar515/RISCV/blob/main/day-1/fig-437.png)
+## Risc-V Control Logic
+### Execute and Register file read/write
+The next task is to 'read from' and 'write into' the registers. In this operation, 2 read and write operation can be carried out simulatenously. The two src1_value/src2_value takes input from the two read register rf_read_data1/ rf_read_data2 and pass it on to the ALU unit. At present, ADDI and ADD is execute whose result is obtained in register rf_write_data. The figure below shows the input and output registers.
 
+![fig-438]()
+```
+	 $rf_wr_en = 1'b0;
+         $rf_wr_index[4:0] = 5'b0;
+         $rf_wr_data[31:0] = 32'b0;
+         $rf_rd_en1 = $rs1_valid;
+         $rf_rd_index1[4:0] = $rs1;
+         $rf_rd_en2 = $rs2_valid;
+         $rf_rd_index2[4:0] = $rs2;
+
+```
+The snapshot of the REGISTER FILE READ operation is included below:
+![fig-439]()
+## Lab on Changes on Register File Read
+![fig-440]()
+```
+	 $rf_wr_en = 1'b0;
+         $rf_wr_index[4:0] = 5'b0;
+         $rf_wr_data[31:0] = 32'b0;
+         $rf_rd_en1 = $rs1_valid;
+         $rf_rd_index1[4:0] = $rs1;
+         $rf_rd_en2 = $rs2_valid;
+         $rf_rd_index2[4:0] = $rs2;
+         
+         $src1_value[31:0] = $rf_rd_data1; //new
+         $src2_value[31:0] = $rf_rd_data2;
+```
+The makerchip implementation output:
+![fig-441]()
+viz:
+
+![fig-442]()
+### Lab on ALU
+![fig-443]
+```
+$result[31:0] = $is_addi ? $src1_value + $imm :
+                         $is_add ? $src1_value + $src2_value :
+                         32'bx ;
+```
+Implementation:
+![fig-444]()
+
+viz:
+
+![fig-445]()
+### Lab On Register File Write
+![fig-446]()
+
+```
+	 $rf_wr_en = $rd_valid && $rd != 5'b0;
+         $rf_wr_index[4:0] = $rd;
+         $rf_wr_data[31:0] = $result;
+```
+Implementation:
+![fig-447]()
+
+## ARRAYS
+In RISC-V, arrays are typically implemented using a combination of registers and memory. Arrays can be stored in memory, where each element is stored at a specific memory address. The processor can use load and store instructions to access these elements. For example, you might load an element from an array in memory into a register, perform operations on it, and then store the result back into memory.
+
+Alternatively, arrays can also be partially stored in registers. If an array is small enough to fit into the available registers, the elements can be loaded into registers for faster processing. This approach can improve performance for certain operations, as register access is generally faster than memory access.
+
+In both cases, whether an array is stored in memory or registers, the RISC-V architecture provides instructions to perform operations on array elements, such as loading, storing, and arithmetic operations.
+
+In summary, the register file in RISC-V architecture consists of a set of registers that are used for temporary storage and fast access to data, while arrays are collections of elements that can be stored either in memory or registers and are manipulated using load, store, and computation instructions.
+
+### Lab For Implementing Branch Instructions
+The next stage in the building of the RISC-V microarchitecture, is the addition of branches. Apart from immediate addition or addition, there may certain other conditions to be satisfied which requires to direct the PC to the branch target address. Now, we have simply added few branch instruction and updated the PC. Some Branching Instructions are :
+* BEQ;==
+* BNE:!=
+* BLT: (x1 < ×2) ^ (x1[311!=×2[311)
+* BGE: (×1 >= ×2) ^ (x1[31]!=×2[31])
+* BLTU: <
+* BGEU: >=
+
+  code:
+  ```
+  $taken_branch = $is_beq ? ($src1_value == $src2_value):
+                         $is_bne ? ($src1_value != $src2_value):
+                         $is_blt ? (($src1_value < $src2_value) ^ ($src1_value[31] != $src2_value[31])):
+                         $is_bge ? (($src1_value >= $src2_value) ^ ($src1_value[31] != $src2_value[31])):
+                         $is_bltu ? ($src1_value < $src2_value):
+                         $is_bgeu ? ($src1_value >= $src2_value):
+                                    1'b0;
+         `BOGUS_USE($taken_branch)
+
+  ```
+  ![fig-448]()
+  code:
+  ```
+  	   //BRANCH INSTRUCTIONS 1
+         $taken_branch = $is_beq ? ($src1_value == $src2_value):
+                         $is_bne ? ($src1_value != $src2_value):
+                         $is_blt ? (($src1_value < $src2_value) ^ ($src1_value[31] != $src2_value[31])):
+                         $is_bge ? (($src1_value >= $src2_value) ^ ($src1_value[31] != $src2_value[31])):
+                         $is_bltu ? ($src1_value < $src2_value):
+                         $is_bgeu ? ($src1_value >= $src2_value):
+                                    1'b0;
+         `BOGUS_USE($taken_branch)
+         
+         //BRANCH INSTRUCTIONS 2
+         $br_target_pc[31:0] = $pc +$imm;
+  ```
+  output:
+  ![fig-449]()
+  ### Lab For Testbench
+  code:
+  ```
+  *passed = |cpu/xreg[10]>>5$value == (1+2+3+4+5+6+7+8+9) ;
+
+```
+![fig-450]()
+## Day 5-Complete Pipelined RiscV CPU Micro-architecture
+### Pipelining the CPU
+Now pipelining of the CPU core is done, which allows easy retiming and reduces functional bug to a great extent . Pipelining allows faster computaion. For pipelining as mentioned earlier we simply need to add @1, @2 and so on. The snapshot of the pipelining is as shown below. In TL verilog, another advantage is defining of pipeline in systematic order is not necessary. More inforamtion on timming abstract can be found in the IEEE paper "Timing-Abstract Circuit Design in Transaction-Level Verilog" by Steeve Hoover in makerchip platform itself or else here.
+  ### Lab For Complementing Branch Instructions
+  Block Diagram:
+
+  ![
